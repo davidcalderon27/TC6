@@ -1,0 +1,38 @@
+##nombre: william calderon
+#TC6: Realice una funcion en python que realice la traducción de una secuencia de DNA a una secuencia de Amino Ácidos. 
+
+##con esta esta función pasamos como argumento una secuencia de ADN en forma de cadena de texto y obtendremos la secuencia de aminoácidos correspondiente.
+#Cada codón de ADN (secuencia de tres nucleótidos) se traducirá a un aminoácido. 
+#Si se encuentra un codón de terminación (TAA, TAG, o TGA), se traducirá como un asterisco (*) que representa el final de la cadena de aminoácidos.
+
+def traducir_dna(secuencia_dna):
+    codigo_genetico = {
+        'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
+        'TCT': 'S', 'TCC': 'S', 'TCA': 'S', 'TCG': 'S',
+        'TAT': 'Y', 'TAC': 'Y', 'TAA': '*', 'TAG': '*',
+        'TGT': 'C', 'TGC': 'C', 'TGA': '*', 'TGG': 'W',
+        'CTT': 'L', 'CTC': 'L', 'CTA': 'L', 'CTG': 'L',
+        'CCT': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
+        'CAT': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
+        'CGT': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',
+        'ATT': 'I', 'ATC': 'I', 'ATA': 'I', 'ATG': 'M',
+        'ACT': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T',
+        'AAT': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',
+        'AGT': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',
+        'GTT': 'V', 'GTC': 'V', 'GTA': 'V', 'GTG': 'V',
+        'GCT': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',
+        'GAT': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
+        'GGT': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G'
+    }
+    
+    secuencia_aminoacidos = ""
+    for i in range(0, len(secuencia_dna), 3):
+        codon = secuencia_dna[i:i+3]
+        aminoacido = codigo_genetico.get(codon, '-')
+        secuencia_aminoacidos += aminoacido
+    
+    return secuencia_aminoacidos
+##ejemplo de uso:
+secuencia_dna = "ATGGTCTACGTCGAAGTCTGAAGGTC"
+secuencia_aminoacidos = traducir_dna(secuencia_dna)
+print(secuencia_aminoacidos)
